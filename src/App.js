@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getPlayerInfo } from './api';
+import { getPlayerInfo, loginWithTelegram } from './api';
 import './App.css';
 import AuthWrapper from './components/AuthWrapper';
 import Barn from './components/Barn';
@@ -17,27 +17,53 @@ function App() {
 	const [money, setMoney] = useState(0); // Manage the player's money here
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const [user, setUser] = useState(null);
 
 	const currentPlayerId = getCurrentPlayerId(); // Get the playerId here
 
 	// Authenticate on load
 	useEffect(() => {
 		console.log('APP START');
-		const authenticate = async () => {
+		const authenticateWithTelegram = async () => {
 			try {
-				const telegramData = {}; // Populate this with the Telegram data, id, username, hash, etc.
-				// await login('123456');
-				const playerData = getPlayerInfo();
-				// setPlayer(playerData);
-				setMoney(playerData.money);
-				setLoading(false);
+				const telegramData = window.Telegram.WebApp.initDataUnsafe.user;
+
+				if (telegramData) {
+					const { id: telegramId, username, hash } = telegramData;
+					// Call backend to verify and log in the user
+					const player = await loginWithTelegram(
+						telegramId,
+						username,
+						hash,
+						telegramData
+					);
+					setUser(player);
+					setLoading(false);
+				} else {
+					throw new Error('Telegram authentication failed');
+				}
 			} catch (err) {
-				setError('Authentication failed', err);
+				setError(err.message);
 				setLoading(false);
 			}
 		};
 
-		authenticate();
+		authenticateWithTelegram();
+		// const authenticate = async () => {
+		// 	try {
+		// 		const telegramData = {}; // Populate this with the Telegram data, id, username, hash, etc.
+		// 		// await login('123456');
+		// 		const playerData = getPlayerInfo();
+		// 		// setPlayer(playerData);
+		// 		setMoney(playerData.money);
+		// 		setLoading(false);
+		// 	} catch (err) {
+		// 		setError('Authentication failed', err);
+		// 		setLoading(false);
+		// 	}
+		// };
+
+		// authenticate();
 	}, [activeTab, currentPlayerId]);
 
 	// Fetch player money each time the active tab changes
