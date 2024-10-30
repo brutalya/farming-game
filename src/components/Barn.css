@@ -1,0 +1,63 @@
+/* Barn container */
+.barn-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	width: 80%;
+	margin-bottom: 100%;
+}
+
+.inventory-grid {
+	display: grid;
+	gap: 1.5%;
+	padding: 2%;
+	background-size: cover;
+	width: 100%;
+	position: relative;
+	background-position: center;
+	margin-top: 15px;
+}
+
+.inventory-item {
+	background: linear-gradient(145deg, #fff7eb, #ffebcd);
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+		-5px -5px 15px rgba(255, 255, 255, 0.7);
+	border-radius: 15px;
+	padding: 20px;
+	text-align: center;
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Plant information text */
+.plant-info {
+	font-size: 16px;
+	color: #666;
+	margin: 5px 0;
+}
+
+.sell-buttons {
+	display: relative;
+}
+
+.sell-buttons button {
+	background-color: #f0b000;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+	font-size: 0.9rem;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.2s;
+}
+
+.sell-buttons button:hover {
+	background-color: #e0a000;
+	transform: scale(1.05);
+}
+
+.sell-buttons button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+	opacity: 0.6;
+}

@@ -1,0 +1,92 @@
+/* Main container for the plants section */
+.plants-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	width: 80%;
+	margin-bottom: 100%;
+}
+
+/* Scrollable grid layout for plants */
+.plants-grid {
+	display: grid;
+	gap: 1.5%;
+	padding: 2%;
+	background-size: cover;
+	width: 100%;
+	position: relative;
+	background-position: center;
+	margin-top: 15px;
+}
+
+/* Plant card design */
+.plant-card {
+	background: linear-gradient(145deg, #fff7eb, #ffebcd);
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+		-5px -5px 15px rgba(255, 255, 255, 0.7);
+	border-radius: 15px;
+	padding: 20px;
+	text-align: center;
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.plant-card:hover {
+	transform: scale(1.03); /* Slight zoom on hover */
+	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2),
+		-5px -5px 20px rgba(255, 255, 255, 0.9);
+}
+
+/* Accessible vs locked plant cards */
+.accessible {
+	background-color: #e6ffe6;
+}
+
+.locked {
+	background-color: #7a7a7a;
+}
+
+/* Plant name styling */
+.plant-name {
+	font-size: 20px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 10px;
+}
+
+/* Plant information text */
+.plant-info {
+	font-size: 16px;
+	color: #666;
+	margin: 5px 0;
+}
+
+/* Status text for locked/unlocked plants */
+.plant-status {
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 15px;
+}
+
+.unlocked {
+	color: #4caf50;
+}
+
+.locked {
+	color: #ff5252;
+}
+
+/* Unlock button design */
+.unlock-button {
+	padding: 10px 15px;
+	background-color: #ff9800;
+	color: white;
+	border: none;
+	border-radius: 25px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.unlock-button:hover {
+	background-color: #f57c00;
+}

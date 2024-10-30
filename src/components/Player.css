@@ -1,0 +1,158 @@
+.player-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	padding-bottom: 30%;
+}
+
+.field-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	width: 60%;
+}
+
+/* Field container with fence background */
+.field-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	gap: 2%;
+	padding: 10%;
+	background-size: cover;
+	width: 100%;
+	max-width: 800px;
+	aspect-ratio: 1 / 1;
+	position: relative;
+	background-position: center;
+	margin-top: 20px;
+}
+
+/* Spot styling */
+.spot {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Active spot styling */
+.active-spot {
+	background-color: #ffebcd;
+	cursor: pointer;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Locked spot styling */
+.locked-spot {
+	background-color: #d3d3d3;
+	cursor: not-allowed;
+	position: relative;
+}
+
+/* Lock icon styling */
+.lock-icon {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0.8;
+}
+
+/* Timer styling */
+.crop-timer {
+	font-size: 0.6rem;
+	color: #444;
+	background-color: rgba(255, 255, 255, 0.95);
+	border-radius: 5px;
+	padding: 2px 6px;
+	position: absolute;
+	bottom: -5%;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1;
+}
+
+/* Base carousel container */
+.plant-carousel {
+	width: 100%;
+	max-width: 800px;
+	margin: 20px auto;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20%;
+	transition: transform 0.5s ease-in-out;
+}
+
+/* Single plant display */
+.carousel-item {
+	width: 20%; /* Relative to carousel width */
+	aspect-ratio: 1 / 1; /* Keep it square */
+	position: relative;
+}
+
+/* Plant icon styling */
+.plant-icon {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.2);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s ease;
+}
+
+.plant-icon:hover {
+	transform: scale(1.1);
+}
+
+/* Navigation arrows */
+.arrow {
+	width: 10%; /* Relative to carousel width */
+	aspect-ratio: 1 / 1; /* Keep arrows square */
+	cursor: pointer;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.arrow:hover {
+	transform: scale(1.1);
+}
+
+/* Hide arrows when not needed */
+.arrow.hidden {
+	visibility: hidden;
+	pointer-events: none;
+}
+
+/* Plant icon styling */
+.plant-icon-on-spot {
+	width: 100%;
+	height: 100%;
+	transition: all 0.3s ease-in-out;
+}
+
+/* Styling for unlock cost label */
+.unlock-cost {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 0.8rem;
+	color: #333;
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 4px 8px;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	z-index: 2;
+}

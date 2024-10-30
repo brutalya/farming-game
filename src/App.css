@@ -1,38 +1,143 @@
+/* Overall Application Container */
 .App {
-  text-align: center;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background: linear-gradient(to bottom, #66ba86, #418054);
+	overflow: hidden;
+	align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Header Section for Sky Background */
+.header {
+	width: 100%;
+	padding: 5%;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	z-index: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Main Content Area for Grass Background */
+.content {
+	flex-grow: 1; /* Allow content to grow */
+	display: flex;
+	justify-content: center;
+	align-items: top; /* Change this to flex-start for better alignment */
+	width: 100%;
+	padding: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Bottom Tab Navigation */
+.tab-navigation {
+	position: fixed;
+	bottom: 0;
+	left: 30px;
+	right: 30px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 20vh;
+	padding: 1vh 0;
+	z-index: 1000;
+	background: none; /* Transparent background for tabs over grass */
 }
 
-.App-link {
-  color: #61dafb;
+/* Add extra margin for larger screens */
+@media (min-width: 1200px) {
+	.tab-navigation {
+		bottom: 40px; /* Increase bottom spacing for larger screens */
+	}
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Tab Button */
+.svg-tab {
+	position: relative;
+	width: 15vw;
+	max-width: 200px;
+	aspect-ratio: 1 / 1;
+	cursor: pointer;
+	transition: transform 0.2s ease;
+	display: flex;
+	justify-content: center; /* Center icon horizontally */
+	align-items: center; /* Center icon vertically */
+}
+
+/* Volumetric effect: shadow background shape */
+.svg-tab::before {
+	content: '';
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 105%; /* Slightly bigger than the button */
+	height: 105%; /* Slightly bigger than the button */
+	border-radius: 20%; /* Same rounded shape as the button */
+	background: #faf3e0; /* Softer black for shadow effect */
+	box-shadow: 0px 12px 15px rgba(0, 0, 0, 0.25); /* Soft, subtle shadow */
+	transform: translate(0%, 3.5%); /* Subtle offset for a layered look */
+	z-index: -1; /* Ensures it's behind the button */
+}
+
+/* Hover and active effects for button */
+.svg-tab:hover {
+	transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.svg-tab.active {
+	transform: scale(1.1);
+}
+
+/* Main button shape */
+.tab-shape {
+	width: 100%;
+	height: 100%;
+	border-radius: 20%;
+	background: linear-gradient(
+		135deg,
+		rgba(240, 227, 181, 1) 0%,
+		rgba(255, 255, 255, 1) 100%
+	);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Softer shadow */
+	display: flex;
+	justify-content: center;
+	align-items: center; /* Centers icon inside shape */
+	z-index: 1; /* Make sure it stays above the background shadow */
+}
+/* Icon styling */
+.tab-icon {
+	width: 50%; /* Icon takes up 50% of the button size */
+	height: 50%;
+	object-fit: contain;
+}
+
+/* Player Name Button with Dynamic Width */
+.money {
+	position: relative;
+	top: 25%;
+	display: inline-flex; /* Flex to adjust width dynamically based on content */
+	padding: 0 20px; /* Padding for space around text */
+	height: 60px; /* Fixed height */
+	cursor: default;
+	transition: transform 0.2s ease;
+	align-items: center; /* Center the text vertically */
+	justify-content: center; /* Center the text horizontally */
+	background: linear-gradient(
+		135deg,
+		rgba(240, 227, 181, 1) 0%,
+		rgb(240, 234, 212) 50%
+	);
+	border-radius: 20px; /* Rounded corners */
+	/* Volumetric shadow effect with two shadows */
+	box-shadow: -4px -2px 0 rgba(240, 234, 212, 0.773),
+		/* Simulated depth shadow */ 0 12px 15px rgba(0, 0, 0, 0.12); /* Softer shadow beneath */
+	width: auto; /* Allow width to adjust based on the text */
+	white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Player Name Text Styling */
+.money-text {
+	font-size: 2rem;
+	color: #333; /* Ensure text visibility */
+	font-weight: bold;
+	white-space: nowrap; /* Prevent text wrapping */
 }
