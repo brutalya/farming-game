@@ -49,12 +49,14 @@ export const login = async (telegramId) => {
 
 // Auth API
 export const loginWithTelegram = async (telegramId, username, hash, data) => {
-	const response = await axios.post(`${API_BASE_URL}/auth/telegram`, {
+	console.log('LOGIN WITH TG');
+	const response = await api.post('/auth/telegram', {
 		telegramId,
 		username,
 		hash,
 		...data,
 	});
+	console.log('LOGIN WITH TG res: ', response.data);
 	setToken(response.data.token);
 	return response.data.player;
 };
