@@ -50,6 +50,7 @@ export const login = async (telegramId) => {
 // Auth API
 export const loginWithTelegram = async (telegramId, username, hash, data) => {
 	console.log('LOGIN WITH TG');
+	console.log(telegramId, username, hash, data);
 	const response = await api.post('/auth/telegram', {
 		telegramId,
 		username,
