@@ -31,7 +31,7 @@ function App() {
 				console.log('telegramData: ', telegramData);
 				console.log('initData: ', initData);
 				if (telegramData) {
-					const { id: telegramId, username, hash } = initData;
+					const { id: telegramId, username, hash } = telegramData;
 					// Call backend to verify and log in the user
 					const player = await loginWithTelegram(
 						telegramId,
