@@ -26,12 +26,13 @@ function App() {
 		console.log('APP START');
 		const authenticateWithTelegram = async () => {
 			try {
-				const telegramData = window.Telegram.WebApp.initDataUnsafe;
-				const initData = window.Telegram.WebApp.initData;
+				const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
+				const telegramData = window.Telegram.WebApp.initDataUnsafe.user;
 				console.log('telegramData: ', telegramData);
-				console.log('initData: ', initData);
+				console.log('initDataUnsafe: ', initDataUnsafe);
 				if (telegramData) {
-					const { id: telegramId, username, hash } = telegramData;
+					const { hash } = initDataUnsafe;
+					const { id: telegramId, username } = telegramData;
 					// Call backend to verify and log in the user
 					const player = await loginWithTelegram(
 						telegramId,
