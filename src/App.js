@@ -27,6 +27,7 @@ function App() {
 		const authenticateWithTelegram = async () => {
 			try {
 				const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
+				const initData = window.Telegram.WebApp.initData;
 				const telegramData = window.Telegram.WebApp.initDataUnsafe.user;
 				console.log('telegramData: ', telegramData);
 				console.log('initDataUnsafe: ', initDataUnsafe);
@@ -38,7 +39,7 @@ function App() {
 						telegramId,
 						username,
 						hash,
-						telegramData
+						initData
 					);
 					setUser(player);
 					setLoading(false);
