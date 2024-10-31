@@ -39,7 +39,7 @@ function App() {
 						telegramId,
 						username,
 						hash,
-						initData
+						initDataUnsafe
 					);
 					setUser(player);
 					setLoading(false);
