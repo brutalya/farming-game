@@ -27,7 +27,7 @@ function App() {
 		const authenticateWithTelegram = async () => {
 			try {
 				const telegramData = window.Telegram.WebApp.initDataUnsafe.user;
-
+				console.log('telegramData: ', telegramData);
 				if (telegramData) {
 					const { id: telegramId, username, hash } = telegramData;
 					// Call backend to verify and log in the user
