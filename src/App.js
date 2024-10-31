@@ -36,12 +36,13 @@ function App() {
 					const { hash } = initDataUnsafe;
 					const { id: telegramId, username } = telegramData;
 					// Call backend to verify and log in the user
-					const player = await loginWithTelegram(
-						telegramId,
-						username,
-						hash,
-						initDataUnsafe
-					);
+					// const player = await loginWithTelegram(
+					// 	telegramId,
+					// 	username,
+					// 	hash,
+					// 	initData
+					// );
+					const player = await loginWithTelegram(initData);
 					setUser(player);
 					setLoading(false);
 				} else {
