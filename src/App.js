@@ -31,6 +31,7 @@ function App() {
 				const telegramData = window.Telegram.WebApp.initDataUnsafe.user;
 				console.log('telegramData: ', telegramData);
 				console.log('initDataUnsafe: ', initDataUnsafe);
+				console.log('initData: ', initData);
 				if (telegramData) {
 					const { hash } = initDataUnsafe;
 					const { id: telegramId, username } = telegramData;
